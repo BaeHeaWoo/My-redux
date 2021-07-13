@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
+    </head>
+    <body>
+        <style>
+            .container {
+                border: 5px solid #000;
+                padding: 1rem;
+                margin-bottom:1rem;
+            }
+            body{
+                margin:1rem;
+            }
+        </style>
+        <h2>with redux</h2>
+        <div id="red">red</div>
+        <script>
+            /*
+            1.스토어를 생성하기위해 createStore를 실행한다.
+            2.이때 
+            */
+            function reducer(state, action){
+                if(state === undefined){ //state가 undefined이면 아직 state가 아직 초기값이 없다.
+                    return {color:'yellow'} //초기화 
+                }
+            }
+            var store = Redux.createStore(reducer); //store만들때 reducer를 인자로 받는다.
+            function red() {
+                var state = store.getState();
+                document.querySelector('#red').innerHTML = `
+                    <div class="container" id="component_red" style="background-color:${state.color}">
+                        <h1>red</h1>
+                        <input type="button" value="fire" onclick="
+                            store.dispatch({type:'CHANGE_COLOR', color:'red'});
+                        ">
+                    </div>
+                `;
+            }
+
+        </script>
+    </body>
+</html>
